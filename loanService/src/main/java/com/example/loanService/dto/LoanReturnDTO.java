@@ -11,7 +11,4 @@ import java.time.LocalDate;
 @Setter
 public class LoanReturnDTO {
     private Long id;
-    private  Long userId;
-    private Long bookId;
-    private LocalDate returnDate;
 }

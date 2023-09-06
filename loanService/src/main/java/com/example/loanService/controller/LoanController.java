@@ -19,10 +19,15 @@ public class LoanController {
     private LoanService loanService;
 
     @PostMapping("/issueBook")
-    public ResponseEntity<ResponseEntity<LoanRecord>> issueBook(@RequestBody LoanDTO loanDTO) {
-        return ResponseEntity.ok(loanService.issue(loanDTO));
+    public ResponseEntity<?> issueBook(@RequestBody LoanDTO loanDTO) {
+        try {
+            return loanService.issue(loanDTO);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
 
     }
+
     @GetMapping("/users/{userId}")
     public List<LoanRecord> getLoanRecordsForUser(@PathVariable Long userId) {
         return loanService.getLoanRecords(userId);
@@ -36,9 +41,14 @@ public class LoanController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
     @PostMapping("/return")
-    public LoanRecord returnBook(@RequestBody LoanReturnDTO loanReturnDTO) throws ResourceNotFoundException {
-        return loanService.returnBook(loanReturnDTO);
+    public ResponseEntity<?> returnLoanedBook(@RequestBody LoanReturnDTO loanReturnDTO) throws ResourceNotFoundException {
+        try {
+            return loanService.returnBook(loanReturnDTO);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
 
     }
 }

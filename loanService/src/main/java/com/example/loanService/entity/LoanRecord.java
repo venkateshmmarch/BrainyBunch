@@ -15,15 +15,13 @@ import java.time.LocalDate;
 public class LoanRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JoinColumn(name ="user_id")
+    @Column(nullable = false)
     private Long userId;
-    @JoinColumn(name = "book_id")
     private Long bookId;
     private LocalDate issueDate;
     private LocalDate dueDate;
-
     private  LocalDate returnDate;
 
 }

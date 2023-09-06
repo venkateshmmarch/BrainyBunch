@@ -9,5 +9,5 @@ import lombok.Setter;
 public class BookDTO {
     private String title;
     private String ISBN;
-    private String status;
+
 }
