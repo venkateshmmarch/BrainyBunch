@@ -3,6 +3,7 @@ package com.example.loanService.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,5 +22,6 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String email;
+    private BigDecimal totalLateFee= BigDecimal.valueOf(0);
 
 }

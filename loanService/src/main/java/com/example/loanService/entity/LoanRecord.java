@@ -3,6 +3,7 @@ package com.example.loanService.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -23,5 +24,5 @@ public class LoanRecord {
     private LocalDate issueDate;
     private LocalDate dueDate;
     private  LocalDate returnDate;
-
+    private BigDecimal lateFee;
 }
